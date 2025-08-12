@@ -54,13 +54,16 @@ Digitar email
 
 Selecionar genero    
    Execute JavaScript    document.querySelector("input[id*='gender-radio-3']").click()
+   Capture Page Screenshot   prints/Selecionar genero .png 
 
 Digitar Telefone
    Input Text    ${Mobile_Number}    1234567890
+   Capture Page Screenshot   prints/Digitar Telefone.png 
       
 Data de Nascimento Novo
     ${dadonascimento}    FakerLibrary.Date Of Birth
     Input Text    ${dateofbirth}    ${dadonascimento}
+    Capture Page Screenshot   prints/Data de Nascimento Novo.png 
    
 Preencher Data de Nascimento
  
@@ -69,19 +72,19 @@ Preencher Data de Nascimento
     Input Text    id=dateOfBirthInput    ${DATA_NASCIMENTO}
     Press Keys    id=dateOfBirthInput    RETURN
     Sleep    2s
-    Capture Element Screenshot    locator=id=dateOfBirthInput
+    Capture Page Screenshot   prints/Preencher Data de Nascimento.png 
     
 Digitar Subjects
     Execute JavaScript    document.getElementById("adplus-anchor").style.display = "none"
     Input Text    ${Subjet}    TESTE  
     #Press Keys    ${Subjet}    RETURN 
     Sleep    2
-    Capture Page Screenshot  
+     Capture Page Screenshot   prints/Digitar Subjects.png 
 
 Selecionar Hobbies
     Click Element  ${Hobbies_Sports}
     Sleep    2
-    Capture Page Screenshot     
+   Capture Page Screenshot   prints/Selecionar Hobbies.png     
    
 
     ${mobile_user}    FakerLibrary.Phone Number
@@ -95,25 +98,27 @@ Digitar Endereco
     Wait Until Element Is Visible    ${Endereco_Atual}    timeout=5s
     Input Text    ${Endereco_Atual}    ${varios_enderecos}
     Sleep    15
-    Capture Page Screenshot
+    Capture Page Screenshot   prints/Digitar Endereco.png 
 
 *** Keywords ***
 Clicar Submit
     Execute JavaScript    document.getElementById("adplus-anchor").style.display = "none"
     Execute JavaScript    document.getElementById("submit").click()
      Sleep    3
-    Capture Page Screenshot
+    Capture Page Screenshot   prints/Clicar Submit.png 
    
     
 
 Fechar Modal Com JavaScript
     Execute JavaScript    document.querySelector("button#closeLargeModal").click()
     Sleep    2
-    Capture Page Screenshot
+    Capture Page Screenshot   prints/Fechar Modal Com JavaScript.png 
+   
 Validar Modal
     Wait Until Element Is Visible    id=${MODAL_ID}    timeout=10s
     ${modal_text}=    Get Text    id=${MODAL_ID}
     Should Be Equal    ${modal_text}    ${EXPECTED_TEXT}
+    Capture Page Screenshot   prints/Validar Modal.png 
     
 Validar Campos do Modal
     [Arguments]    ${expected_name}    ${expected_gender}    ${expected_mobile}
@@ -125,7 +130,7 @@ Validar Campos do Modal
     Should Not Be Empty     ${actual_name}    ${expected_name}
     Should Not Be Empty    ${actual_gender}  ${expected_gender}
     Should Not Be Empty     ${actual_mobile}  ${expected_mobile}   
-
+    Capture Page Screenshot   prints/Validar Campos do Modal.png 
  
 Select Hobbies
     [Arguments]    @{hobbies}
@@ -134,10 +139,12 @@ Select Hobbies
         Run Keyword If    '${hobby}' == 'Reading'   Click Element    xpath=//label[normalize-space(text())="Reading"]
         Run Keyword If    '${hobby}' == 'Music'     Click Element    xpath=//label[normalize-space(text())="Music"]
     END
+    Capture Page Screenshot   prints/Select Hobbies.png
 
 Selecionar Hobbies Correto 
     [Arguments]    ${Hobbies_Sports} 
-Click Element    xpath=//label[normalize-space(text())='${hobby}']    
+Click Element    xpath=//label[normalize-space(text())='${hobby}']
+    Capture Page Screenshot   prints/Selecionar Hobbies Correto.png    
 
 
 Tirar Print da Tela
@@ -146,7 +153,7 @@ Tirar Print da Tela
 Validar Mensagem de Confirmacao
     Wait Until Element Is Visible    id=${MODAL_ID}    timeout=10s
     Element Should Contain    id=${MODAL_ID}    ${EXPECTED_TEXT}
-    Capture Page Screenshot
+    Capture Page Screenshot   prints/Validar Mensagem de Confirmacao.png
 
 Preencher State e City
     [Arguments]    ${state}    ${city}
@@ -160,3 +167,4 @@ Preencher State e City
     Input Text    xpath=//div[@id='city']//input    ${city}
     Press Keys    xpath=//div[@id='city']//input    RETURN
     Sleep    1s
+    Capture Page Screenshot   prints/Preencher State e City.png
