@@ -29,7 +29,8 @@ Cenário 002: Validar Campos obrigatórios Campos Vazios
   Então desejo visualizar o bloqueio do submit   
   
 Cenário 003: Validação visual do envio
-  [Documentation]    Validar visualmente se o formulário foi enviado com sucesso 
+  [Documentation]    Validar visualmente se o formulário foi enviado com sucesso
+  [Tags]  Validação visual do envio
   Dado que o usuário esteja no site Tools QA
   Quando preencho e envio o formulário corretamente
   Então devo visualizar uma mensagem de confirmação de envio
